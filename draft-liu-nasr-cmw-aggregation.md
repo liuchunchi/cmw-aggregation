@@ -9,19 +9,19 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: NASR
+area: "Security"
+workgroup: "Network Attestation for Secure Routing"
 keyword:
  - next generation
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: "Network Attestation for Secure Routing"
+  type: "Working Group"
+  mail: "nasr@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/nasr"
+  github: "liuchunchi/cmw-aggregation"
+  latest: "https://liuchunchi.github.io/cmw-aggregation/draft-liu-nasr-cmw-aggregation.html"
 
 author:
  -
