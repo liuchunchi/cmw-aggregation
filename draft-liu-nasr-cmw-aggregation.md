@@ -43,13 +43,58 @@ TODO Abstract
 
 # Introduction
 
-TODO Introduction
+Conceptual Messages Wrapper (CMW) {{?draft-ietf-rats-msg-wrap-11}} provides a type of encapsulation format that can be used for any RATS messages, such as Evidence, Attestation Results, Endorsements, and Reference Values.
+
+In NASR, the operator wishes to provide a verifiable proof of security to the orchestrated connectivity service that client requested from him. As a result, the simplest way to acquire the Attestation Results or Evidences (using CMWs) from all devices of a path and aggregate them. This is usually conducted over control plane or controller southbound channels before the service is actually delivered.
 
 
-# Conventions and Definitions
+# Format Considerations
 
-{::boilerplate bcp14-tagged}
+Entity Attestation Tokens (EATs) permits nesting of EATs. The simplest way is to treat the CMW as a claim and combine them.
 
+~~~~~~~~~~
+  {
+    "node1": ({<CMW>}),
+    "node2": ({<CMW>}),
+    ...
+  }
+~~~~~~~~~~
+Collection of CMWs.
+
+Another format is to keep only one set of claims, but the values becomes an array. For example
+
+~~~~~~~~~~
+  {
+    "claim1": [
+      "node1",
+      "node2"
+    ],
+    "claim2": [
+      "node1",
+      "node2"
+    ],
+    ...
+  }
+~~~~~~~~~~
+
+Another format is to process the collected claims according to certain statistical rules, keeping only one value to each claim. The statistical rule is decided by the controller, including for example but not limited to average, medium, min, max.
+
+~~~~~~~~~~
+  {
+    "claim1": processed_value1,
+    "claim2": processed_value2,
+    ...
+  }
+~~~~~~~~~~
+
+# Modes
+
+Different work modes indicates different content a CMW carries. There are 4 cases:
+
+1. Simple Aggregation of Attestation Results
+2. Queried Aggregation of Attestation Results
+3. Simple Aggregation of Evidences
+4. Queried Aggregation of Evidences
 
 # Security Considerations
 
